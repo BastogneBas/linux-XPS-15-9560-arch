@@ -1,6 +1,6 @@
 pkg/
 src/
-linux-mainline*
+linux-XPS-15-9560*
 config.old
 linux.install.pkg
 
