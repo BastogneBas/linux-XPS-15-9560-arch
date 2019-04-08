@@ -8,8 +8,8 @@
 
 pkgbase=linux-XPS-15-9560               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v5.1-rc3
-pkgver=5.1rc3
+_tag=v5.1-rc4
+pkgver=5.1rc4
 pkgrel=1
 arch=(x86_64)
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
@@ -17,7 +17,7 @@ license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=linux-XPS-15-9560
-threads=8
+MAKEFLAGS="-j8"
 source=(
   "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
   config         # the main kernel config file
@@ -31,7 +31,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'ad1e22890f16d67fee115ab98e65ec9dcc6ac33033545decc678b4582644f1e6'
+            '922f996f53a7a82f0d89a2e28b8766ca92859cdd68b8f14693b4245233304c9c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -46,8 +46,6 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   
-  msg2 "Number of threads: $threads"
-
   #echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
@@ -64,15 +62,15 @@ prepare() {
   cp ../config .config
   #make olddefconfig
   #make oldconfig
-  make -j $threads nconfig
+  make nconfig
 
-  make -j $threads -s kernelrelease > ../version
+  make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
 
 build() {
   cd $_srcname
-  make -j $threads bzImage modules htmldocs
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -95,7 +93,7 @@ _package() {
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
-  make -j $threads INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
