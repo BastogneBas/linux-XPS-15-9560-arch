@@ -8,13 +8,13 @@
 
 pkgbase=linux-XPS-15-9560               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v5.1
-pkgver=5.1
-pkgrel=2
+_tag=v5.2-rc1
+pkgver=5.2rc1
+pkgrel=1
 arch=(x86_64)
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+url="https://kernel.org/"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(xmlto kmod inetutils bc libelf git)
 options=('!strip')
 _srcname=linux-XPS-15-9560
 MAKEFLAGS="-j8"
@@ -31,7 +31,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '996887ee58af13dade555df6894565098a8784f03f01c3b061d24fda5d489df1'
+            'fc447619d213ab95a9bbabd635510e8efe9db8993a5a6640dd9a4c3aa0546f74'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
