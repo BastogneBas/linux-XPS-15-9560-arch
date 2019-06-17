@@ -72,8 +72,8 @@ prepare() {
 
 build() {
   cd $_srcname
-#mainline: disabled for 5.1-rc5
-#make bzImage modules htmldocs
+  #mainline: disabled for 5.1-rc5
+  #make bzImage modules htmldocs
   make bzImage modules
 }
 
