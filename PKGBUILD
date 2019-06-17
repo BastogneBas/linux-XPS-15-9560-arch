@@ -8,8 +8,8 @@
 
 pkgbase=linux-XPS-15-9560               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v5.2-rc2
-pkgver=5.2rc2
+_tag=v5.2-rc5
+pkgver=5.2rc5
 pkgrel=1
 arch=(x86_64)
 url="https://kernel.org/"
@@ -23,6 +23,7 @@ source=(
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
+  0001-less-ttys.patch # Less ttys for the win
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 validpgpkeys=(
@@ -31,9 +32,10 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '45b0a16c6d2585809949dca8df66a16d11c526eda18e71739d651b325b5eda3b'
+            '4b1b7f017568ce4a4b61973237c8bff74d6ac57ce74d5cd152fefe239a5166e2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            '57b14a035493a6d55a9ab0e94d90699d83351ff60c857b1207cefc971ba8d1f0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
@@ -46,7 +48,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   
-  #echo "-$pkgrel" > localversion.10-pkgrel
+  echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
   local src
