@@ -8,8 +8,8 @@
 
 pkgbase=linux-XPS-15-9560               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v5.2-rc5
-pkgver=5.2rc5
+_tag=v5.2-rc6
+pkgver=5.2rc6
 pkgrel=1
 arch=(x86_64)
 url="https://kernel.org/"
@@ -32,7 +32,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '4b1b7f017568ce4a4b61973237c8bff74d6ac57ce74d5cd152fefe239a5166e2'
+            'c1c33118cee152fea26e72217f9e44b247536bb6fcd493f721ba96bd9f828762'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '57b14a035493a6d55a9ab0e94d90699d83351ff60c857b1207cefc971ba8d1f0'
