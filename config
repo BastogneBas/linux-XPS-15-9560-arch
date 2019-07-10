@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.2.0-rc6 Kernel Configuration
+# Linux/x86 5.2.0-rc7 Kernel Configuration
 #
 
 #
@@ -1597,7 +1597,7 @@ CONFIG_BLK_DEV_LOOP=y
 CONFIG_BLK_DEV_LOOP_MIN_COUNT=3
 # CONFIG_BLK_DEV_CRYPTOLOOP is not set
 # CONFIG_BLK_DEV_DRBD is not set
-CONFIG_BLK_DEV_NBD=y
+CONFIG_BLK_DEV_NBD=m
 # CONFIG_BLK_DEV_SKD is not set
 # CONFIG_BLK_DEV_SX8 is not set
 # CONFIG_BLK_DEV_RAM is not set
