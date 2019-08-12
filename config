@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.3.0-rc3 Kernel Configuration
+# Linux/x86 5.3.0-rc4 Kernel Configuration
 #
 
 #
@@ -5891,7 +5891,7 @@ CONFIG_CRYPTO_RSA=y
 CONFIG_CRYPTO_DH=y
 CONFIG_CRYPTO_ECC=m
 CONFIG_CRYPTO_ECDH=m
-# CONFIG_CRYPTO_ECRDSA is not set
+CONFIG_CRYPTO_ECRDSA=m
 
 #
 # Authenticated Encryption with Associated Data
@@ -5966,7 +5966,7 @@ CONFIG_CRYPTO_SHA256=y
 CONFIG_CRYPTO_SHA512=y
 # CONFIG_CRYPTO_SHA3 is not set
 # CONFIG_CRYPTO_SM3 is not set
-# CONFIG_CRYPTO_STREEBOG is not set
+CONFIG_CRYPTO_STREEBOG=m
 # CONFIG_CRYPTO_TGR192 is not set
 # CONFIG_CRYPTO_WP512 is not set
 CONFIG_CRYPTO_GHASH_CLMUL_NI_INTEL=m

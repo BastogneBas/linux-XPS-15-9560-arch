@@ -14,7 +14,10 @@ pkgrel=1
 arch=(x86_64)
 url="https://kernel.org/"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+makedepends=(
+  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
+  graphviz imagemagick
+)
 options=('!strip')
 _srcname=linux-XPS-15-9560
 MAKEFLAGS="-j8"
@@ -32,7 +35,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '39515c93e79eaa78d43a84de6986575f5e9fdd9b30006cd222198670ecd855b6'
+            '8562680b3ebe6d44357951d30580f01faf552f70936fc75e58b6841f6560f423'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '57b14a035493a6d55a9ab0e94d90699d83351ff60c857b1207cefc971ba8d1f0'
@@ -72,9 +75,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  #mainline: disabled for 5.1-rc5
-  #make bzImage modules htmldocs
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -225,19 +226,17 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  #mainline: disabled for 5.1-rc5
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
 
-  #msg2 "Removing doctrees..."
-  #rm -r "$builddir/Documentation/output/.doctrees"
-
-  #msg2 "Moving HTML docs..."
-  #local src dst
-  #while read -rd '' src; do
-    #dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    #mkdir -p "${dst%/*}"
-    #mv "$src" "$dst"
-    #rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  #done < <(find "$builddir/Documentation/output" -type f -print0)
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
