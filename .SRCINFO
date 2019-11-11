@@ -1,6 +1,6 @@
 pkgbase = linux-XPS-15-9560
 	pkgver = 5.4rc6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -25,7 +25,7 @@ pkgbase = linux-XPS-15-9560
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 5be0df5065f446a1c654a55118dd205a4db3c5e6c8a65ec15db0b4379ae831af
+	sha256sums = 7d59cd5295c02ae07250d34f8aac96d6d3f40d22764ec720a4bbc0c3be704063
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = 57b14a035493a6d55a9ab0e94d90699d83351ff60c857b1207cefc971ba8d1f0
